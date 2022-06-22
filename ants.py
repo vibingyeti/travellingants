@@ -21,11 +21,24 @@ class Colony:
 
         def __str__(self):
             #TO DO
+            #camille's code
+            if self.isEmpty(): 
+            return "[], cost : " + str(self.cost)
+            #
+        
             pass
 
         def __lt__(self, other):
             #TO DO
+            
+            #camille's code
+            if other < None :
+                return False
+            
+            
+                return self.cost < other.cost
             pass
+            #
 
         # Returns city to be travelled to from current position
         def policy(self):
