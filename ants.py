@@ -1,5 +1,5 @@
-# Prénom, Nom, Matricule
-# Prénom, Nom, Matricule
+# Camille, Divisia, 20119289
+# Patrick, Lanoie, Matricule
 
 import numpy as np
 import random as rand
