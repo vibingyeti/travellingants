@@ -76,6 +76,9 @@ class Colony:
 
     def __str__(self):
         # TODO
+        #camille's code
+        result = 'Nearest Neighbor Heuristic Cost :' + str(min(costs))
+        #
 
     # Returns the cost of the solution produced by 
     # the nearest neighbor heuristix
