@@ -10,10 +10,12 @@ class Colony:
             self.colony = colony
             self.pos = rand.randrange(self.colony.n)
 
+            #je pense que ca c'est le chemin que les fourmis gardent
+            #en memoire
             self.mem = np.zeros(self.colony.n)
             self.mem[self.pos] = 1
 
-            self.path = [self.pos]
+            self.path = [self.pos] #chemin final append each new city
             self.cost = 0
 
         def reset(self, colony):
@@ -21,12 +23,8 @@ class Colony:
 
         def __str__(self):
             #TO DO
-            #camille's code
-            if self.isEmpty(): 
-            return "[], cost : " + str(self.cost)
-            #
-        
-            pass
+            return str(self.path) + ', cost : '+ str(self.cost)
+
 
         def __lt__(self, other):
             #TO DO
@@ -36,35 +34,46 @@ class Colony:
                 return False
             
             
-                return self.cost < other.cost
-            pass
-            #
+            return self.cost < other.cost
+            
 
         # Returns city to be travelled to from current position
         def policy(self):
             if rand.random() < self.colony.q_0:
+              
                 # Deterministic decision
+              s = max(self.tau)
+              
+              print('a')
                 # TODO
             else:
                 # Stochastic decision
                 # TODO
+              print('b')
+                
 
         # Updates the local pheromones and position of ant
         # while keeping track of total cost and path
+              
         def move(self):
             destination = self.policy()
 
             # local updating
             # TODO
+            self.tau = (1 - self.alpha)*self.tau + self.alpha*1/self.tau_0
+            
 
             # Change position
             # TODO
+            
 
 
         # Updates the pheromone levels of ALL edges that form 
         # the minimum cost loop at each iteration
         def globalUpdate(self):
             # TODO
+            self.tau = (1 - self.alpha)*self.tau + self.alpha*self.cost
+            
 
             print(self)
 
@@ -81,7 +90,7 @@ class Colony:
 
         self.tau_0 = 1 / (self.n * self.nearestNeighborHeuristic())
         self.tau = [[self.tau_0 for _ in range(self.n)] for _ in range(self.n)]
-        self.ants = [self.Ant(self) for _ in range(self.m)]
+        self.ants = [self.Ant(self) for _ in range(m)]
 
         self.beta = beta
         self.alpha = 0.1
@@ -99,6 +108,8 @@ class Colony:
         costs = np.zeros(self.n)
 
         # TODO
+        
+        
 
         return min(costs)
 
@@ -106,6 +117,7 @@ class Colony:
     # Returns inverse of smallest distance between r and u
     def eta(self, r, u):
         # TODO
+      
         pass
 
     def optimize(self, num_iter):
@@ -129,4 +141,4 @@ if __name__ == "__main__":
 
     ant_colony = Colony(adjMat)
 
-    ant_colony.optimize(1000)
+    ant_colony.optimize(1) #le nombre de fourmis qu'on met sur la matrice adjacente
