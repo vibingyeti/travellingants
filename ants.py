@@ -108,7 +108,13 @@ class Colony:
         costs = np.zeros(self.n)
 
         # TODO
-        
+            def nearestNeighborHeuristic(self):
+        costs = np.zeros(self.n)
+
+        distance = 0.0
+        for i in range(0,self.n - 1):
+          distance = 
+          #pas fini
         
 
         return min(costs)
